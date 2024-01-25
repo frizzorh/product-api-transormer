@@ -1,0 +1,114 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Public Product Catalog API",
+    "version": "1.0.0",
+    "description": "API for the Catalog Top 10 service",
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "paths": {
+    "/top-10-products": {
+      "summary": "Get top 10 best sellers products",
+      "get": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/product-list"
+          }
+        },
+        "security": [
+          {
+            "product-catalog-api": []
+          }
+        ],
+        "summary": "Get top 10 best sellers products"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "product": {
+        "description": "Product",
+
+        "required": [
+          "name",
+          "desc"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "desc": {
+            "description": "",
+            "type": "string"
+          }
+        }
+      },
+      "product-list": {
+        "description": "List of products",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/product"
+        }
+      }
+    },
+    "responses": {
+      "product-list": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/product"
+              }
+            },
+            "examples": {
+              "product-list": {
+                "value": [
+                  {
+                    "name": "Quarkus T-shirt",
+                    "desc": "Our T-Shirt is an everyday essential! This short-sleeve heavyweight T-shirt is comfortable, economical and made to last. Designed with a traditional fit that runs true to size, he’ll show off his personality, humor and interests with an easy, relaxed style."
+                  },
+                  {
+                    "name": "Pronounced Kubernetes",
+                    "desc": "Our Men's Value T-Shirt is an everyday essential! This short-sleeve heavyweight T-shirt is comfortable, economical and made to last. Designed with a traditional fit that runs true to size, he’ll show off his personality, humor and interests with an easy, relaxed style."
+                  },
+                  {
+                    "name": "Knit socks",
+                    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut urna leo, cursus a fringilla et, aliquam at tellus. Praesent est nulla, mattis in auctor vitae, commodo sed eros. Etiam volutpat a felis vel elementum. Duis ut vestibulum orci, ut hendrerit felis. Nulla nunc lectus, luctus ut tortor a, sollicitudin gravida dolor. Integer euismod, velit non tempor mattis, odio neque ornare neque, nec sollicitudin elit massa nec ante."
+                  },
+                  {
+                    "name": "Quarkus H2Go water bottle",
+                    "desc": "Copper vacuum insulated sport bottle with 650 ml capacity. Durable, double wall stainless steel vacuum construction with copper insulation, which allows your beverage to stay cold for 48 hours and at least 12 hours for hot beverages. The construction also prevents condensation on the outside of the bottle. Material: Stainless Steel. Colour: Black Height:27,20 cm Diameter:7,20 cm Weight:380 gram"
+                  },
+                  {
+                    "name": "Patagonia Refugio pack 28L",
+                    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut urna leo, cursus a fringilla et, aliquam at tellus. Praesent est nulla, mattis in auctor vitae, commodo sed eros. Etiam volutpat a felis vel elementum. Duis ut vestibulum orci, ut hendrerit felis. Nulla nunc lectus, luctus ut tortor a, sollicitudin gravida dolor. Integer euismod, velit non tempor mattis, odio neque ornare neque, nec sollicitudin elit massa nec ante."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "description": "List of products"
+      }
+    },
+    "securitySchemes": {
+      "product-catalog-api": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "product-catalog-api": []
+    }
+  ]
+
+}
