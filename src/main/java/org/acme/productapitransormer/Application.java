@@ -10,7 +10,7 @@ public class Application extends RouteBuilder {
                 .to("direct:cleanupHttp")
                 .to("rest:get:{{services.privateProductCatalogAPIPath}}" +
                         "?host={{services.privateProductCatalogAPIHost}}" +
-                        "&queryParameters=limit=10&amppage=1")
+                        "&queryParameters=limit=10&amp;page=1")
                 .to("jsonata:transformer.jsonata?inputType=JsonString&outputType=JsonString")
         ;
 
