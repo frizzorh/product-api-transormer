@@ -13,6 +13,17 @@
     "/top-10-products": {
       "summary": "Get top 10 best sellers products",
       "get": {
+        "parameters": [
+          {
+            "name": "myIntRequiredHeader",
+            "description": "Just for validation demonstration sake.",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "header",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/product-list"
@@ -95,13 +106,6 @@
           }
         },
         "description": "List of products"
-      }
-    },
-    "securitySchemes": {
-      "product-catalog-api": {
-        "type": "apiKey",
-        "name": "api_key",
-        "in": "header"
       }
     }
   },
